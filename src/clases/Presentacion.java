@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author Pavilion
  */
 public class Presentacion extends javax.swing.JFrame {
-
+        
     /**
      * Creates new form Presentacion
      */
