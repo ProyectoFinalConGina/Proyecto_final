@@ -38,6 +38,7 @@ public class Presentacion extends javax.swing.JFrame {
         logouaa = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaIntegrantes = new javax.swing.JTextArea();
+        jButton1Siguiente = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,11 +58,29 @@ public class Presentacion extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 320, 210));
 
+        jButton1Siguiente.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1Siguiente.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jButton1Siguiente.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1Siguiente.setText("Siguiente");
+        jButton1Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 180, 50));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1SiguienteActionPerformed
+        // TODO add your handling code here:
+        Inicio ini=new Inicio();
+        ini.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1SiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,6 +119,7 @@ public class Presentacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1Siguiente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaIntegrantes;
     private javax.swing.JLabel logouaa;
