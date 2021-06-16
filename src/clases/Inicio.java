@@ -50,7 +50,7 @@ public class Inicio extends javax.swing.JFrame {
         jButtonIngresar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIngresar.setText("Ingresar");
         jButtonIngresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIngresarActionPerformed(evt);
@@ -63,7 +63,7 @@ public class Inicio extends javax.swing.JFrame {
         jButtonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonRegistrar.setText("Registrar");
         jButtonRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 170, 50));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
@@ -88,7 +88,9 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+
+        
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
     /**
