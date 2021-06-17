@@ -82,6 +82,7 @@ public class Presentacion extends javax.swing.JFrame {
         Inicio ini=new Inicio();
         ini.setVisible(true);
         dispose();
+        //redireccionamiento
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     /**
