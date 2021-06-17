@@ -5,6 +5,8 @@
  */
 package clases;
 
+import java.awt.Color;
+
 /**
  *
  * @author Pavilion
@@ -16,6 +18,14 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        jButtonRegistro.setOpaque(false);
+        jButtonRegistro.setBackground(new Color(0,0,0,32));
+        jButtonSalida.setOpaque(false);
+        jButtonSalida.setBackground(new Color(0,0,0,32));
+        jButtonConsulta.setOpaque(false);
+        jButtonConsulta.setBackground(new Color(0,0,0,32));
+        jButtonSalir.setOpaque(false);
+        jButtonSalir.setBackground(new Color(0,0,0,32));
     }
 
     /**
@@ -29,6 +39,10 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButtonRegistro = new javax.swing.JButton();
+        jButtonSalida = new javax.swing.JButton();
+        jButtonConsulta = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,7 +53,31 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel2.setText("Menu Principal");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 330, 60));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 330, 60));
+
+        jButtonRegistro.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jButtonRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegistro.setText("Registro");
+        jButtonRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButtonRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 180, 50));
+
+        jButtonSalida.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jButtonSalida.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalida.setText("Salida");
+        jButtonSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButtonSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 180, 50));
+
+        jButtonConsulta.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jButtonConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConsulta.setText("Consulta");
+        jButtonConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButtonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, 50));
+
+        jButtonSalir.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalir.setText("Salir");
+        jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 180, 50));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -84,6 +122,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButtonConsulta;
+    private javax.swing.JButton jButtonRegistro;
+    private javax.swing.JButton jButtonSalida;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
