@@ -104,6 +104,11 @@ public class Registrar extends javax.swing.JFrame {
         jButtonAceptar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAceptar.setText("Aceptar");
         jButtonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 190, 50));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
@@ -111,6 +116,12 @@ public class Registrar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        // TODO add your handling code here:
+        //serializacion del proyecto
+        
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
