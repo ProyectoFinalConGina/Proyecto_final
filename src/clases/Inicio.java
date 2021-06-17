@@ -64,6 +64,11 @@ public class Inicio extends javax.swing.JFrame {
         jButtonRegistrar.setText("Registrar");
         jButtonRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 170, 50));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
@@ -89,9 +94,19 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
         // TODO add your handling code here
+        Ingresar ing=new Ingresar();
+        ing.setVisible(true);
+        dispose();
 
         
     }//GEN-LAST:event_jButtonIngresarActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        // TODO add your handling code here:
+        Registrar reg=new Registrar();
+        reg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
