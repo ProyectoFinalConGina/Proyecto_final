@@ -6,6 +6,8 @@
 package clases;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,6 +18,15 @@ public class Registrar extends javax.swing.JFrame {
     /**
      * Creates new form Registrar
      */
+    
+    MySqlConn objConn=new MySqlConn();
+    
+    public Registrar(MySqlConn conn){
+        this.objConn=objConn;
+        initComponents();
+    }
+    
+    
     public Registrar() {
         initComponents();
         jTextFieldNombre.setBorder(null);
@@ -120,7 +131,35 @@ public class Registrar extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
         //serializacion del proyecto
+        String usuario,password,parte1,parte2,query, passwordconf, password1, nombre;
+        nombre=this.jTextFieldNombre.getText().trim();
+        usuario=this.jTextFieldUsuario.getText().trim();
+        char[] passw=this.jPasswordFieldContraseña.getPassword();
+        char[] passwconf=this.jPasswordFieldConfirmarContraseña.getPassword();
+        password1=new String(passw);
+        passwordconf=new String(passwconf);
         
+        if(password1.equals(passwordconf)){
+        
+        password=new String(passw);
+        parte1="insert into users values (";
+        parte2="'"+nombre+"',"+"'"+usuario+"',"+" MD5('"+password+"'))";
+        query=parte1+parte2;
+        System.out.println(query);
+        int j=this.objConn.Update(query);
+        if(j>0){
+           JOptionPane.showMessageDialog(this, "Cuenta Registrada...");
+            System.out.println("Cuenta Registrada...");
+        }
+        
+        
+        }else{
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.");
+        }
+       
+        Ingresar ing = new Ingresar();
+        ing.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**

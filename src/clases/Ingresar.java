@@ -6,6 +6,9 @@
 package clases;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -16,6 +19,12 @@ public class Ingresar extends javax.swing.JFrame {
     /**
      * Creates new form Ingresar
      */
+     MySqlConn objConn=new MySqlConn();
+    
+    public Ingresar(MySqlConn conn){
+        this.objConn=objConn;
+        initComponents();
+    }
     public Ingresar() {
         initComponents();
         jTextFieldUsuario.setBorder(null);
@@ -91,9 +100,28 @@ public class Ingresar extends javax.swing.JFrame {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
-        Menu men =  new Menu();
-        men.setVisible(true);
-        dispose();
+        String usuario,password,query;
+        usuario=this.jTextFieldUsuario.getText().trim();
+        query="select * from users where usuario = "+"'"+usuario+"'";
+        this.objConn.Consult(query);
+        try{
+            String contraseñaMySql=this.objConn.rs.getString(3);
+            char[] passw=this.jPasswordFieldContraseña.getPassword();
+            password=new String(passw);
+            String contraseñaencriptada=DigestUtils.md5Hex(password);
+            if(contraseñaMySql.equals(contraseñaencriptada)){
+                JOptionPane.showMessageDialog(this, "Bienvenido " +
+                    this.objConn.rs.getString(2)+" al sistema");
+                    Menu men =  new Menu();
+                    men.setVisible(true);
+                    dispose();
+            }else
+                JOptionPane.showMessageDialog(this, "Error en la constraseña");
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this, "No existe la cuenta");
+            System.out.println("No existe la cuenta");
+        }
+        
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
