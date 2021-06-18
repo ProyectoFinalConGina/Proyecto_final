@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JOptionPane;
+import clases.Piso1;
 
 
 /**
@@ -31,12 +32,10 @@ public class Registro extends javax.swing.JFrame {
     
     public Registro(MySqlConn conn){
         this.objConn=objConn;
-        initComponents();
-        
-        
-        
-        
+        initComponents(); 
     }
+    
+    
     
     public Registro() {
         initComponents();
@@ -68,42 +67,19 @@ public class Registro extends javax.swing.JFrame {
         jButtonRegistrarCliente.setBackground(new Color(0,0,0,32));
         jButtonRegresar.setOpaque(false);
         jButtonRegresar.setBackground(new Color(0,0,0,32));
+        jButtonSeleccionarHabitacion.setOpaque(false);
+        jButtonSeleccionarHabitacion.setBackground(new Color(0,0,0,32));
         
         
         //jLabelMax1.setVisible(false);
         jLabelMax2.setVisible(false);
         jLabelMax3.setVisible(false);
         
-        List<Clientes> lista = new ArrayList<Clientes>();
-
-        try{
-            Statement st = objConn.conn.createStatement();
-            String query = "select * from clientes";
-            ResultSet rs = st.executeQuery(query);
-            String nombre, ciudad, tipo, fechasalida, fechaentrada;
-            int total;
-            lista.removeAll(lista);
-            while(rs.next()){
-                nombre = rs.getString("nombre");
-                System.out.println("Esto es nombre: "+nombre);
-                ciudad = rs.getString("ciudad");
-                tipo = rs.getString("tipo");
-                fechasalida = rs.getString("fechasalida");
-                fechaentrada = rs.getString("fechaentrada");
-                total = rs.getInt("total");
-                
-                Clientes c;
-                c = new Clientes(nombre, ciudad, tipo, fechasalida, fechaentrada, total);
-                
-                lista.add(c);
-            }
-            
-        }catch(SQLException sqle){
-            System.out.println("Error SQL....." + sqle);
-        }
-        int total;
-        total = lista.size();
-        System.out.println("total: "+total);
+        
+        
+        
+        
+        
         
     }
 
@@ -135,6 +111,8 @@ public class Registro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabelFecha = new javax.swing.JLabel();
         jButtonRegresar = new javax.swing.JButton();
+        jButtonSeleccionarHabitacion = new javax.swing.JButton();
+        jLabelHab = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -169,16 +147,16 @@ public class Registro extends javax.swing.JFrame {
 
         jTextFieldNombreCliente.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextFieldNombreCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextFieldNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 270, 40));
+        getContentPane().add(jTextFieldNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 290, 40));
 
         jTextFieldCiudadOrigen.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextFieldCiudadOrigen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextFieldCiudadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 270, 40));
+        getContentPane().add(jTextFieldCiudadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 290, 40));
 
         jTextFieldTotalPersonas.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextFieldTotalPersonas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextFieldTotalPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 120, 40));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 270, 40));
+        getContentPane().add(jTextFieldTotalPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 90, 40));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 290, 40));
 
         jComboBoxTipoHabitacion.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jComboBoxTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sencilla", "Doble", "Triple" }));
@@ -187,16 +165,16 @@ public class Registro extends javax.swing.JFrame {
                 jComboBoxTipoHabitacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBoxTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 270, 40));
+        getContentPane().add(jComboBoxTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 290, 40));
 
         jLabelMax1.setText("*2 Personas P/Habitacion.");
-        getContentPane().add(jLabelMax1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 180, 20));
+        getContentPane().add(jLabelMax1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 180, 20));
 
         jLabelMax2.setText("*4 Personas P/Habitacion.");
-        getContentPane().add(jLabelMax2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 170, 20));
+        getContentPane().add(jLabelMax2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 170, 20));
 
         jLabelMax3.setText("*6 Personas P/Habitacion.");
-        getContentPane().add(jLabelMax3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 170, 20));
+        getContentPane().add(jLabelMax3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 170, 20));
 
         jButtonRegistrarCliente.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jButtonRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,6 +205,19 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 110, 30));
 
+        jButtonSeleccionarHabitacion.setFont(new java.awt.Font("Monospaced", 1, 11)); // NOI18N
+        jButtonSeleccionarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSeleccionarHabitacion.setText("Seleccionar Habitacion");
+        jButtonSeleccionarHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeleccionarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionarHabitacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSeleccionarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 190, 40));
+        getContentPane().add(jLabelHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 70, 40));
+
+        fondo.setForeground(new java.awt.Color(255, 255, 255));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -267,7 +258,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButtonRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarClienteActionPerformed
         // TODO add your handling code here:
-        String nombre,ciudad,tipo,total,fechasalida,parte1,parte2,query, fechaActual;
+        String nombre,ciudad,tipo,total,fechasalida,parte1,parte2,query, fechaActual, query1;
+        
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         nombre=this.jTextFieldNombreCliente.getText().trim();
         ciudad=this.jTextFieldCiudadOrigen.getText().trim();
@@ -280,24 +272,90 @@ public class Registro extends javax.swing.JFrame {
         año = fecha.get(Calendar.YEAR);
         mes = fecha.get(Calendar.MONTH);
         dia = fecha.get(Calendar.DAY_OF_MONTH);
-        
         fechaActual= (dia+"-"+(mes+1)+"-"+año);
-            
         
-        parte1="insert into clientes values (";
-        parte2="'"+nombre+"','"+ciudad+"','"+tipo+"','"+total+"','"+fechasalida+"','"+fechaActual+"')";
-        query=parte1+parte2;
-        System.out.println(query);
-        int j=this.objConn.Update(query);
-        if(j>0){
-           JOptionPane.showMessageDialog(this, "Cliente registrado");
+        int num;
+        num = Piso1.num;
+        System.out.println("hola: "+num);
+        
+        int totals=3, totald=5, totalt=7;
+        
+        switch(tipo)
+        {
+            case "Sencilla":
+                if(total.equals(totals)){
+                    JOptionPane.showMessageDialog(this, "Hay una persona extra");    
+                }
+                break;
+            case "Doble":
+                if(total.equals(totald)){
+                    JOptionPane.showMessageDialog(this, "Hay una persona extra");    
+                }
+                break;
+            case "Triple":
+                if(total.equals(totalt)){
+                    JOptionPane.showMessageDialog(this, "Hay una persona extra");    
+                }
+                break;
+        }
+        
+        
+        List<Clientes> lista = new ArrayList<Clientes>();
+
+        try{
+            Statement st = objConn.conn.createStatement();
+            query1 = "select * from clientes";
+            ResultSet rs = st.executeQuery(query1);
+            String nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1;
+            int total1;
+            lista.removeAll(lista);
+            while(rs.next()){
+                nombre1 = rs.getString("nombre");
+                ciudad1 = rs.getString("ciudad");
+                tipo1 = rs.getString("tipo");
+                fechasalida1 = rs.getString("fechasalida");
+                fechaentrada1 = rs.getString("fechaentrada");
+                total1 = rs.getInt("total");
+                
+                Clientes c;
+                c = new Clientes(nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1, total1);
+                
+                lista.add(c);
+            }
+            
+        }catch(SQLException sqle){
+            System.out.println("Error SQL....." + sqle);
+        }
+        int totalLista;
+        totalLista = lista.size();
+       
+        if(totalLista<30){
+            parte1="insert into clientes values (";
+            parte2="'"+nombre+"','"+ciudad+"','"+tipo+"','"+total+"','"+fechasalida+"','"+fechaActual+"','"+num+"')";
+            query=parte1+parte2;
+            System.out.println(query);
+            int j=this.objConn.Update(query);
+            if(j>0){
+            JOptionPane.showMessageDialog(this, "Cliente registrado");
             System.out.println("Cliente Registrado");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Hotel lleno");
         }
         
         
         
         
+        
     }//GEN-LAST:event_jButtonRegistrarClienteActionPerformed
+
+    private void jButtonSeleccionarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarHabitacionActionPerformed
+        // TODO add your handling code here:
+        Piso1 p1 = new Piso1();
+        p1.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButtonSeleccionarHabitacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +396,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonRegistrarCliente;
     private javax.swing.JButton jButtonRegresar;
+    private javax.swing.JButton jButtonSeleccionarHabitacion;
     private javax.swing.JComboBox<String> jComboBoxTipoHabitacion;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -349,6 +408,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelFecha;
+    private javax.swing.JLabel jLabelHab;
     private javax.swing.JLabel jLabelMax1;
     private javax.swing.JLabel jLabelMax2;
     private javax.swing.JLabel jLabelMax3;
