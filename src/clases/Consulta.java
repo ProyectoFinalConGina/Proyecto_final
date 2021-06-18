@@ -19,7 +19,7 @@ public class Consulta extends javax.swing.JFrame {
     public Consulta() {
         initComponents();
         
-        
+        this.setLocationRelativeTo(null);
         jButtonGaleria.setOpaque(false);
         jButtonGaleria.setBackground(new Color(0,0,0,32));
         jButtonRegresar.setOpaque(false);
@@ -57,6 +57,11 @@ public class Consulta extends javax.swing.JFrame {
         jButtonGaleria.setForeground(new java.awt.Color(255, 255, 255));
         jButtonGaleria.setText("Galeria");
         jButtonGaleria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGaleria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGaleriaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonGaleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 170, 50));
 
         jButtonRegresar.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -82,6 +87,13 @@ public class Consulta extends javax.swing.JFrame {
         men.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jButtonGaleriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGaleriaActionPerformed
+        // TODO add your handling code here:
+        Galeria1 g1 = new Galeria1();
+        g1.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonGaleriaActionPerformed
 
     /**
      * @param args the command line arguments

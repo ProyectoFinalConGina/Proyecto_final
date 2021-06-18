@@ -18,6 +18,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
         jButtonIngresar.setOpaque(false);
         jButtonIngresar.setBackground(new Color(0,0,0,32));
         jButtonRegistrar.setOpaque(false);

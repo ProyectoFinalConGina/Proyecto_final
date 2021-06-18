@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author Mario Garcia
  */
-public class Galeria3 extends javax.swing.JFrame {
+public class Galeria4 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Galeria3
+     * Creates new form Galeria4
      */
-    public Galeria3() {
+    public Galeria4() {
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -26,6 +26,8 @@ public class Galeria3 extends javax.swing.JFrame {
         jButtonMenu.setBackground(new Color(0,0,0,32));
         jButtonSiguiente.setOpaque(false);
         jButtonSiguiente.setBackground(new Color(0,0,0,32));
+        
+        
     }
 
     /**
@@ -51,19 +53,19 @@ public class Galeria3 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoh1.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 140));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 140));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel1.setText("Habitaciones Dobles");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        jLabel1.setText("Habitaciones Triples");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 450, 60));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/dobles1.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 190));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/triples1.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/dobles2.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, 190));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/triuples2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 240, 190));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/dobles3.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cuartos/triples3.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 240, 190));
 
         jButtonRegresar.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -75,7 +77,7 @@ public class Galeria3 extends javax.swing.JFrame {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 170, 40));
+        getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 180, 40));
 
         jButtonMenu.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,7 +88,7 @@ public class Galeria3 extends javax.swing.JFrame {
                 jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 180, 40));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 180, 40));
 
         jButtonSiguiente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jButtonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,20 +99,13 @@ public class Galeria3 extends javax.swing.JFrame {
                 jButtonSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 170, 40));
+        getContentPane().add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 180, 40));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        // TODO add your handling code here:
-        Galeria4 g4 = new Galeria4();
-        g4.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
         // TODO add your handling code here:
@@ -119,10 +114,17 @@ public class Galeria3 extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        // TODO add your handling code here:
+        Galeria5 g5 = new Galeria5();
+        g5.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         // TODO add your handling code here:
-        Galeria2 g2 = new Galeria2();
-        g2.setVisible(true);
+        Galeria3 g3 = new Galeria3();
+        g3.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
@@ -143,20 +145,20 @@ public class Galeria3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Galeria3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Galeria4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Galeria3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Galeria4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Galeria3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Galeria4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Galeria3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Galeria4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Galeria3().setVisible(true);
+                new Galeria4().setVisible(true);
             }
         });
     }

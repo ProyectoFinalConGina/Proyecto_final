@@ -29,6 +29,9 @@ public class Registrar extends javax.swing.JFrame {
     
     public Registrar() {
         initComponents();
+        
+        
+        this.setLocationRelativeTo(null);
         jTextFieldNombre.setBorder(null);
         jTextFieldNombre.setOpaque(false);
         jTextFieldNombre.setBackground(new Color(0,0,0,48));

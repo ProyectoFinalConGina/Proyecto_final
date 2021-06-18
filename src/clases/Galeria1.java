@@ -19,6 +19,7 @@ public class Galeria1 extends javax.swing.JFrame {
     public Galeria1() {
         initComponents();
         
+        this.setLocationRelativeTo(null);
         jButtonMenu.setOpaque(false);
         jButtonMenu.setBackground(new Color(0,0,0,32));
         jButtonSiguiente.setOpaque(false);
@@ -66,12 +67,22 @@ public class Galeria1 extends javax.swing.JFrame {
         jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMenu.setText("Regresar a Consultas");
         jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 180, 40));
 
         jButtonSiguiente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jButtonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSiguiente.setText("Siguiente ->");
         jButtonSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 180, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoh1.png"))); // NOI18N
@@ -86,6 +97,20 @@ public class Galeria1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        // TODO add your handling code here:
+        Consulta cons = new Consulta();
+        cons.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonMenuActionPerformed
+
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        // TODO add your handling code here:
+        Galeria2 g2 = new Galeria2();
+        g2.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     /**
      * @param args the command line arguments

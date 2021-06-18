@@ -31,6 +31,9 @@ public class Registro extends javax.swing.JFrame {
     
     public Registro() {
         initComponents();
+        
+        
+        this.setLocationRelativeTo(null);
         Calendar min = Calendar.getInstance();
         Calendar fecha = new GregorianCalendar();
         min.add(Calendar.DAY_OF_MONTH, 1);
