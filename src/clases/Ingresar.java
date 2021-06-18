@@ -7,6 +7,7 @@ package clases;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -20,6 +21,7 @@ public class Ingresar extends javax.swing.JFrame {
      * Creates new form Ingresar
      */
      MySqlConn objConn=new MySqlConn();
+     
     
     public Ingresar(MySqlConn conn){
         this.objConn=objConn;
@@ -37,6 +39,8 @@ public class Ingresar extends javax.swing.JFrame {
         jPasswordFieldContraseña.setBackground(new Color (0,0,0,48));
         jButtonAceptar.setOpaque(false);
         jButtonAceptar.setBackground(new Color(0,0,0,32));
+        
+        
     }
 
     /**

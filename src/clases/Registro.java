@@ -6,10 +6,15 @@
 package clases;
 
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -27,6 +32,10 @@ public class Registro extends javax.swing.JFrame {
     public Registro(MySqlConn conn){
         this.objConn=objConn;
         initComponents();
+        
+        
+        
+        
     }
     
     public Registro() {
@@ -65,8 +74,36 @@ public class Registro extends javax.swing.JFrame {
         jLabelMax2.setVisible(false);
         jLabelMax3.setVisible(false);
         
-        
-        
+        List<Clientes> lista = new ArrayList<Clientes>();
+
+        try{
+            Statement st = objConn.conn.createStatement();
+            String query = "select * from clientes";
+            ResultSet rs = st.executeQuery(query);
+            String nombre, ciudad, tipo, fechasalida, fechaentrada;
+            int total;
+            lista.removeAll(lista);
+            while(rs.next()){
+                nombre = rs.getString("nombre");
+                System.out.println("Esto es nombre: "+nombre);
+                ciudad = rs.getString("ciudad");
+                tipo = rs.getString("tipo");
+                fechasalida = rs.getString("fechasalida");
+                fechaentrada = rs.getString("fechaentrada");
+                total = rs.getInt("total");
+                
+                Clientes c;
+                c = new Clientes(nombre, ciudad, tipo, fechasalida, fechaentrada, total);
+                
+                lista.add(c);
+            }
+            
+        }catch(SQLException sqle){
+            System.out.println("Error SQL....." + sqle);
+        }
+        int total;
+        total = lista.size();
+        System.out.println("total: "+total);
         
     }
 
@@ -256,6 +293,7 @@ public class Registro extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "Cliente registrado");
             System.out.println("Cliente Registrado");
         }
+        
         
         
         
