@@ -27,6 +27,8 @@ public class Ingresar extends javax.swing.JFrame {
     }
     public Ingresar() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.setOpaque(false);
         jTextFieldUsuario.setBackground(new Color(0,0,0,48));

@@ -6,6 +6,7 @@
 package clases;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
         jButtonRegistro.setOpaque(false);
         jButtonRegistro.setBackground(new Color(0,0,0,32));
         jButtonSalida.setOpaque(false);
@@ -76,12 +79,22 @@ public class Menu extends javax.swing.JFrame {
         jButtonConsulta.setForeground(new java.awt.Color(255, 255, 255));
         jButtonConsulta.setText("Consulta");
         jButtonConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, 50));
 
         jButtonSalir.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSalir.setText("Salir");
         jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 180, 50));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
@@ -96,6 +109,22 @@ public class Menu extends javax.swing.JFrame {
         reg.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRegistroActionPerformed
+
+    private void jButtonConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaActionPerformed
+        // TODO add your handling code here:
+        Consulta cons = new Consulta();
+        cons.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonConsultaActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(this, "Cerrando Sistema, Hasta Pronto :D");
+        dispose();
+        
+        
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments

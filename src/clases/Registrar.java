@@ -29,6 +29,9 @@ public class Registrar extends javax.swing.JFrame {
     
     public Registrar() {
         initComponents();
+        
+        
+        this.setLocationRelativeTo(null);
         jTextFieldNombre.setBorder(null);
         jTextFieldNombre.setOpaque(false);
         jTextFieldNombre.setBackground(new Color(0,0,0,48));
@@ -150,16 +153,18 @@ public class Registrar extends javax.swing.JFrame {
         if(j>0){
            JOptionPane.showMessageDialog(this, "Cuenta Registrada...");
             System.out.println("Cuenta Registrada...");
+            
         }
         
+        Ingresar ing = new Ingresar();
+        ing.setVisible(true);
+        dispose();
         
         }else{
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.");
         }
        
-        Ingresar ing = new Ingresar();
-        ing.setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**

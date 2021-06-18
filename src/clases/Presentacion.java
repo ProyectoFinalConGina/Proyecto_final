@@ -18,6 +18,7 @@ public class Presentacion extends javax.swing.JFrame {
      */
     public Presentacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jTextAreaIntegrantes.setBackground(new Color(0,0,0,32));
         jTextAreaIntegrantes.setBorder(null);
         jScrollPane1.setOpaque(false);
