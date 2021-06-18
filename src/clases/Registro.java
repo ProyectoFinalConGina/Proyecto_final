@@ -6,8 +6,12 @@
 package clases;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,11 +22,24 @@ public class Registro extends javax.swing.JFrame {
     /**
      * Creates new form Registro
      */
+    MySqlConn objConn=new MySqlConn();
+    
+    public Registro(MySqlConn conn){
+        this.objConn=objConn;
+        initComponents();
+    }
+    
     public Registro() {
         initComponents();
         Calendar min = Calendar.getInstance();
+        Calendar fecha = new GregorianCalendar();
         min.add(Calendar.DAY_OF_MONTH, 1);
         jDateChooser1.setMinSelectableDate(min.getTime());
+        int año, mes, dia;
+        año = fecha.get(Calendar.YEAR);
+        mes = fecha.get(Calendar.MONTH);
+        dia = fecha.get(Calendar.DAY_OF_MONTH);
+        jLabelFecha.setText("Fecha actual : "+dia+" / "+(mes+1)+" / "+año);
         
         jTextFieldNombreCliente.setBorder(null);
         jTextFieldNombreCliente.setOpaque(false);
@@ -35,6 +52,16 @@ public class Registro extends javax.swing.JFrame {
         jTextFieldTotalPersonas.setBackground(new Color(0,0,0,48));
         jComboBoxTipoHabitacion.setBorder(null);
         jComboBoxTipoHabitacion.setOpaque(false);
+        jButtonRegistrarCliente.setOpaque(false);
+        jButtonRegistrarCliente.setBackground(new Color(0,0,0,32));
+        jButtonRegresar.setOpaque(false);
+        jButtonRegresar.setBackground(new Color(0,0,0,32));
+        
+        
+        //jLabelMax1.setVisible(false);
+        jLabelMax2.setVisible(false);
+        jLabelMax3.setVisible(false);
+        
         
         
         
@@ -61,6 +88,13 @@ public class Registro extends javax.swing.JFrame {
         jTextFieldTotalPersonas = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jComboBoxTipoHabitacion = new javax.swing.JComboBox<>();
+        jLabelMax1 = new javax.swing.JLabel();
+        jLabelMax2 = new javax.swing.JLabel();
+        jLabelMax3 = new javax.swing.JLabel();
+        jButtonRegistrarCliente = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelFecha = new javax.swing.JLabel();
+        jButtonRegresar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,14 +141,122 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 270, 40));
 
         jComboBoxTipoHabitacion.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jComboBoxTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sencilla $300", "Doble $400", "Triple $500" }));
+        jComboBoxTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sencilla", "Doble", "Triple" }));
+        jComboBoxTipoHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTipoHabitacionActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBoxTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 270, 40));
+
+        jLabelMax1.setText("*2 Personas P/Habitacion.");
+        getContentPane().add(jLabelMax1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 180, 20));
+
+        jLabelMax2.setText("*4 Personas P/Habitacion.");
+        getContentPane().add(jLabelMax2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 170, 20));
+
+        jLabelMax3.setText("*6 Personas P/Habitacion.");
+        getContentPane().add(jLabelMax3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 170, 20));
+
+        jButtonRegistrarCliente.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jButtonRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegistrarCliente.setText("Registrar");
+        jButtonRegistrarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRegistrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 190, 50));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel8.setText("*Solo una persona extra por habitacion");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));
+
+        jLabelFecha.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        getContentPane().add(jLabelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 200, 20));
+
+        jButtonRegresar.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegresar.setText("<- Regresar");
+        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 110, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxTipoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoHabitacionActionPerformed
+        // TODO add your handling code here:
+        String hab;
+        String totalpersonas;
+        totalpersonas = jTextFieldTotalPersonas.getText();
+        
+        hab = jComboBoxTipoHabitacion.getSelectedItem().toString();
+        
+        if(hab == "Sencilla"){
+        jLabelMax1.setVisible(true);
+        jLabelMax2.setVisible(false);
+        jLabelMax3.setVisible(false);
+    }else if(hab == "Doble"){
+        jLabelMax1.setVisible(false);
+        jLabelMax2.setVisible(true);
+        jLabelMax3.setVisible(false);
+    }else if(hab == "Triple"){
+        jLabelMax1.setVisible(false);
+        jLabelMax2.setVisible(false);
+        jLabelMax3.setVisible(true);
+    }
+        
+        
+    }//GEN-LAST:event_jComboBoxTipoHabitacionActionPerformed
+
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        // TODO add your handling code here:
+        Menu men = new Menu();
+        men.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jButtonRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarClienteActionPerformed
+        // TODO add your handling code here:
+        String nombre,ciudad,tipo,total,fechasalida,parte1,parte2,query, fechaActual;
+        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
+        nombre=this.jTextFieldNombreCliente.getText().trim();
+        ciudad=this.jTextFieldCiudadOrigen.getText().trim();
+        tipo=jComboBoxTipoHabitacion.getSelectedItem().toString();
+        total=this.jTextFieldTotalPersonas.getText().trim();
+        fechasalida=dFormat.format(jDateChooser1.getDate());
+        
+        Calendar fecha = new GregorianCalendar();
+        int año, mes, dia;
+        año = fecha.get(Calendar.YEAR);
+        mes = fecha.get(Calendar.MONTH);
+        dia = fecha.get(Calendar.DAY_OF_MONTH);
+        
+        fechaActual= (dia+"-"+(mes+1)+"-"+año);
+            
+        
+        parte1="insert into clientes values (";
+        parte2="'"+nombre+"','"+ciudad+"','"+tipo+"','"+total+"','"+fechasalida+"','"+fechaActual+"')";
+        query=parte1+parte2;
+        System.out.println(query);
+        int j=this.objConn.Update(query);
+        if(j>0){
+           JOptionPane.showMessageDialog(this, "Cliente registrado");
+            System.out.println("Cliente Registrado");
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButtonRegistrarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +295,8 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButtonRegistrarCliente;
+    private javax.swing.JButton jButtonRegresar;
     private javax.swing.JComboBox<String> jComboBoxTipoHabitacion;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -162,6 +306,11 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelFecha;
+    private javax.swing.JLabel jLabelMax1;
+    private javax.swing.JLabel jLabelMax2;
+    private javax.swing.JLabel jLabelMax3;
     private javax.swing.JTextField jTextFieldCiudadOrigen;
     private javax.swing.JTextField jTextFieldNombreCliente;
     private javax.swing.JTextField jTextFieldTotalPersonas;

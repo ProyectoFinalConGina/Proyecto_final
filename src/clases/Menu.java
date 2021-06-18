@@ -59,6 +59,11 @@ public class Menu extends javax.swing.JFrame {
         jButtonRegistro.setForeground(new java.awt.Color(255, 255, 255));
         jButtonRegistro.setText("Registro");
         jButtonRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistroActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 180, 50));
 
         jButtonSalida.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -84,6 +89,13 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroActionPerformed
+        // TODO add your handling code here:
+        Registro reg = new Registro();
+        reg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonRegistroActionPerformed
 
     /**
      * @param args the command line arguments
