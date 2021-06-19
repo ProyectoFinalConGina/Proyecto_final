@@ -390,63 +390,63 @@ public class Piso1 extends javax.swing.JFrame {
         getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, -1, -1));
 
         botones.add(h201);
-        h201.setText(null);
+        h201.setText("null");
         getContentPane().add(h201, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
         botones.add(h206);
-        h206.setText(null);
+        h206.setText("null");
         getContentPane().add(h206, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
         botones.add(h211);
-        h211.setText(null);
+        h211.setText("null");
         getContentPane().add(h211, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
 
         botones.add(h202);
-        h202.setText(null);
+        h202.setText("null");
         getContentPane().add(h202, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
 
         botones.add(h207);
-        h207.setText(null);
+        h207.setText("null");
         getContentPane().add(h207, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
         botones.add(h212);
-        h212.setText(null);
+        h212.setText("null");
         getContentPane().add(h212, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
         botones.add(h203);
-        h203.setText(null);
+        h203.setText("null");
         getContentPane().add(h203, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
         botones.add(h208);
-        h208.setText(null);
+        h208.setText("null");
         getContentPane().add(h208, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
 
         botones.add(h213);
-        h213.setText(null);
+        h213.setText("null");
         getContentPane().add(h213, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, -1));
 
         botones.add(h204);
-        h204.setText(null);
+        h204.setText("null");
         getContentPane().add(h204, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
         botones.add(h209);
-        h209.setText(null);
+        h209.setText("null");
         getContentPane().add(h209, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
 
         botones.add(h214);
-        h214.setText(null);
+        h214.setText("null");
         getContentPane().add(h214, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, -1));
 
         botones.add(h205);
-        h205.setText(null);
+        h205.setText("null");
         getContentPane().add(h205, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
 
         botones.add(h210);
-        h210.setText(null);
+        h210.setText("null");
         getContentPane().add(h210, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
 
         botones.add(h215);
-        h215.setText(null);
+        h215.setText("null");
         getContentPane().add(h215, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, -1));
 
         jButtonSeleccionar.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
@@ -460,7 +460,7 @@ public class Piso1 extends javax.swing.JFrame {
         getContentPane().add(jButtonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 160, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
-        fondo.setText(null);
+        fondo.setText("null");
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
