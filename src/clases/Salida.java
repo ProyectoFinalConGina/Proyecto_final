@@ -32,6 +32,7 @@ public class Salida extends javax.swing.JFrame {
     
     public Salida() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jTextFieldNumHabitacion.setBorder(null);
         jTextFieldNumHabitacion.setOpaque(false);
         jTextFieldNumHabitacion.setBackground(new Color(0,0,0,48));

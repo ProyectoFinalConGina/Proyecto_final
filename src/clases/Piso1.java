@@ -36,6 +36,7 @@ public class Piso1 extends javax.swing.JFrame {
     public Piso1() {
         initComponents();
         
+        this.setLocationRelativeTo(null);
         jButtonSeleccionar.setOpaque(false);
         jButtonSeleccionar.setBackground(new Color(0,0,0,32));
         

@@ -112,6 +112,9 @@ public class Consulta extends javax.swing.JFrame {
 
     private void jButtonBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClientesActionPerformed
         // TODO add your handling code here:
+        BuscarClientes bc = new BuscarClientes();
+        bc.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonBuscarClientesActionPerformed
 
     /**
