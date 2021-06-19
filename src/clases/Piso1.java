@@ -151,7 +151,7 @@ public class Piso1 extends javax.swing.JFrame {
                 
                 
                 Clientes c;
-                c = new Clientes(nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1, total1);
+                c = new Clientes(nombre1, ciudad1, tipo1,total1,fechasalida1, fechaentrada1, habitacion1);
                 
                 lista.add(c);
             }
@@ -159,11 +159,6 @@ public class Piso1 extends javax.swing.JFrame {
         }catch(SQLException sqle){
             System.out.println("Error SQL....." + sqle);
         }
-        
-        
-        
-        
-        
         
     }
 

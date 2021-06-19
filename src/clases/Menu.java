@@ -73,6 +73,11 @@ public class Menu extends javax.swing.JFrame {
         jButtonSalida.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSalida.setText("Salida");
         jButtonSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 180, 50));
 
         jButtonConsulta.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -125,6 +130,13 @@ public class Menu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalidaActionPerformed
+        // TODO add your handling code here:
+        Salida sal = new Salida();
+        sal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonSalidaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -276,7 +276,6 @@ public class Registro extends javax.swing.JFrame {
         
         int num;
         num = Piso1.num;
-        System.out.println("hola: "+num);
         
         int totals=3, totald=5, totalt=7;
         
@@ -307,7 +306,7 @@ public class Registro extends javax.swing.JFrame {
             query1 = "select * from clientes";
             ResultSet rs = st.executeQuery(query1);
             String nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1;
-            int total1;
+            int total1, habitacion1;
             lista.removeAll(lista);
             while(rs.next()){
                 nombre1 = rs.getString("nombre");
@@ -316,9 +315,11 @@ public class Registro extends javax.swing.JFrame {
                 fechasalida1 = rs.getString("fechasalida");
                 fechaentrada1 = rs.getString("fechaentrada");
                 total1 = rs.getInt("total");
+                habitacion1 = rs.getInt("habitacion");
+              
                 
                 Clientes c;
-                c = new Clientes(nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1, total1);
+                c = new Clientes(nombre1, ciudad1, tipo1,total1,fechasalida1, fechaentrada1, habitacion1);
                 
                 lista.add(c);
             }

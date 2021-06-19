@@ -18,25 +18,33 @@ public class Clientes {
     private Integer total;
     private String fechasalida;
     private String fechaentrada;
-    private String cuarto;
+    private Integer habitacion;
 
-    public Clientes(String nombre, String ciudad, String tipo, Integer total, String fechasalida, String fechaentrada, String cuarto) {
+    public Clientes(String nombre, String ciudad, String tipo, Integer total, String fechasalida, String fechaentrada, Integer habitacion) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.tipo = tipo;
         this.total = total;
         this.fechasalida = fechasalida;
         this.fechaentrada = fechaentrada;
-        this.cuarto = cuarto;
+        this.habitacion = habitacion;
     }
 
-    Clientes(String nombre, String ciudad, String tipo, String fechasalida, String fechaentrada, int total) {
+    Clientes(String nombre, String ciudad, String tipo, String fechasalida, String fechaentrada, int total, int habitacion) {
          //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + ", Cudad: " + ciudad + ", Tipo: " + tipo + ", Total: " + total + ", Fechasalida: " + fechasalida + ", Fechaentrada: " + fechaentrada + ", Cuarto: " + cuarto ;
+        return "Nombre: " + nombre + ", Cudad: " + ciudad + ", Tipo: " + tipo + ", Total: " + total + ", Fechasalida: " + fechasalida + ", Fechaentrada: " + fechaentrada + ", Habitacion: " + habitacion ;
+    }
+
+    public Integer getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Integer habitacion) {
+        this.habitacion = habitacion;
     }
     
 
@@ -87,14 +95,6 @@ public class Clientes {
 
     public void setFechaentrada(String fechaentrada) {
         this.fechaentrada = fechaentrada;
-    }
-
-    public String getCuarto() {
-        return cuarto;
-    }
-
-    public void setCuarto(String cuarto) {
-        this.cuarto = cuarto;
     }
     
     
