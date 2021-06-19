@@ -12,6 +12,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.BaseColor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,6 +60,8 @@ public class Salida extends javax.swing.JFrame {
         jTextFieldinfo1.setBackground(new Color(0,0,0,48));
         jButtonBaja.setOpaque(false);
         jButtonBaja.setBackground(new Color(0,0,0,32));
+        jButtonPDF.setOpaque(false);
+        jButtonPDF.setBackground(new Color(0,0,0,32));
         jButtonRegresar.setOpaque(false);
         jButtonRegresar.setBackground(new Color(0,0,0,32));
         
@@ -71,6 +87,7 @@ public class Salida extends javax.swing.JFrame {
         jTextFieldinfo1 = new javax.swing.JTextField();
         jButtonBaja = new javax.swing.JButton();
         jButtonRegresar = new javax.swing.JButton();
+        jButtonPDF = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,6 +152,17 @@ public class Salida extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 140, 30));
 
+        jButtonPDF.setFont(new java.awt.Font("Monospaced", 1, 10)); // NOI18N
+        jButtonPDF.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPDF.setText("Generar ticket en PDF");
+        jButtonPDF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPDFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 170, 30));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -167,13 +195,9 @@ public class Salida extends javax.swing.JFrame {
                 c = new Clientes(nombre1, ciudad1, tipo1,total1,fechasalida1, fechaentrada1, habitacion1);
                 
                 if(h1 == habitacion1){
-                    
-                    System.out.println("busca: "+h+"hab1: "+habitacion1);
                     jTextFieldinfo.setText("Nombre: " + nombre1 + ", Cudad: " + ciudad1 + ", Tipo de Habitacion: " + tipo1 + ", Total de Personas: " + total1);
                     jTextFieldinfo1.setText("Fecha de salida: " + fechasalida1 + ", Fecha de entrada: " + fechaentrada1 + ", Habitacion: " + habitacion1);
                 }
-                
-                //System.out.println("busca: "+h+"hab1: "+habitacion1);
                 lista.add(c);
             }
             
@@ -211,6 +235,256 @@ public class Salida extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
+    private void jButtonPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPDFActionPerformed
+        // TODO add your handling code here:
+       Document doc=new Document();
+       FileOutputStream ficheroPDF = null;
+        try {
+            ficheroPDF = new FileOutputStream("Ticket.pdf");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            PdfWriter.getInstance(doc,ficheroPDF);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        int h1;
+        String h = this.jTextFieldNumHabitacion.getText().trim();
+        h1 = Integer.parseInt(h);
+        
+        List<Clientes> lista = new ArrayList<Clientes>();
+
+        try{
+            Statement st = objConn.conn.createStatement();
+            String query1 = "select * from clientes";
+            ResultSet rs = st.executeQuery(query1);
+            String nombre1, ciudad1, tipo1, fechasalida1, fechaentrada1;
+            int total1, habitacion1;
+            lista.removeAll(lista);
+            while(rs.next()){
+                nombre1 = rs.getString("nombre");
+                ciudad1 = rs.getString("ciudad");
+                tipo1 = rs.getString("tipo");
+                fechasalida1 = rs.getString("fechasalida");
+                fechaentrada1 = rs.getString("fechaentrada");
+                total1 = rs.getInt("total");
+                habitacion1 = rs.getInt("habitacion");
+                
+                int costo1 = 0;
+                if(tipo1.equals("Sencilla")){
+                costo1=300;
+                }
+                if(tipo1.equals("Doble")){
+                costo1=400;
+                }
+                if(tipo1.equals("Triple")){
+                costo1=500;
+                }
+                String sal = fechasalida1.substring(0,2);
+                String ent = fechaentrada1.substring(0,2);
+                
+                int sal1, ent1;
+                sal1 = Integer.parseInt(sal);
+                ent1 = Integer.parseInt(ent);
+                
+                int dias, costoTotal;
+                dias = sal1-ent1;
+                
+                costoTotal = costo1*dias;
+                
+                Clientes c;
+                c = new Clientes(nombre1, ciudad1, tipo1,total1,fechasalida1, fechaentrada1, habitacion1);
+                
+                if(h1 == habitacion1){
+       doc.open();
+       
+       
+
+       Paragraph hotel=new Paragraph("Hotel Ok Sibilus",FontFactory.getFont("arial",18,Font.BOLD,BaseColor.BLACK));
+       hotel.setAlignment(Element.ALIGN_CENTER);
+       
+       Paragraph slogan=new Paragraph (" ''Trabajamos para su comodidad'' ",FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       slogan.setAlignment(Element.ALIGN_CENTER);
+       
+       Paragraph direccion=new Paragraph("Direccion: Pablo Picasso, Las Glorias, Puerto Vallarta, Jal.",FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       direccion.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph fecha=new Paragraph("Fecha : "+fechaentrada1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       fecha.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph nombrehuesped=new Paragraph("Nombre del Huesped: "+nombre1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       nombrehuesped.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph ciudad=new Paragraph("Ciudad de Origen: "+ciudad1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       ciudad.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph fechaingreso=new Paragraph("Fecha de ingreso: "+fechaentrada1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       fechaingreso.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph fechasalida=new Paragraph("Fecha de salida: "+fechasalida1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       fechasalida.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph tipo=new Paragraph("Tipo de habitacion: "+tipo1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       tipo.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph costo=new Paragraph("Costo de la habitacion:"+costo1,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       costo.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph dia=new Paragraph("Dias de Estancia :"+dias,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       dia.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph costotot=new Paragraph("Total a pagar :"+costoTotal,FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       costotot.setAlignment(Element.ALIGN_LEFT);
+       
+       Paragraph firma=new Paragraph("Firma: Mario Azael Garcia Chavez",FontFactory.getFont("arial",14,Font.BOLD,BaseColor.BLACK));
+       firma.setAlignment(Element.ALIGN_CENTER);
+        
+       try{
+           Image foto=Image.getInstance("logoh1.png");
+           foto.scaleToFit(200, 200);
+           foto.setAlignment(Chunk.ALIGN_MIDDLE);
+           doc.add(foto);   
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+       
+        try {
+            doc.add( Chunk.NEWLINE );
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add(hotel);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add( Chunk.NEWLINE );
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add(slogan);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add( Chunk.NEWLINE );
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add(direccion);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(fecha);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(nombrehuesped);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(ciudad);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(fechaingreso);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            doc.add(fechasalida);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(tipo);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(costo);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(dia);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            doc.add(costotot);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        try {
+            doc.add( Chunk.NEWLINE );
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try{
+           Image foto=Image.getInstance("firma.jpg");
+           foto.scaleToFit(200, 200);
+           foto.setAlignment(Chunk.ALIGN_MIDDLE);
+           doc.add(foto);   
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+        
+        try {
+            doc.add(firma);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Salida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+      
+       //doc.add(new Paragraph("Universidad",FontFactory.getFont("arial",22,Font.ITALIC,BaseColor.CYAN)));
+       
+       
+       doc.close();
+        System.out.println("Documento exitosamente creado...");
+                   
+                    
+                }
+                
+                lista.add(c);
+            }
+            
+        }catch(SQLException sqle){
+            System.out.println("Error SQL....." + sqle);
+        }
+ 
+        
+        
+       
+
+    
+        
+   
+        
+    }//GEN-LAST:event_jButtonPDFActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,14 +516,19 @@ public class Salida extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Salida().setVisible(true);
-            }
+            } 
         });
     }
+        
+   
+        
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonBaja;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonPDF;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
